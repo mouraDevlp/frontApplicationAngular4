@@ -13,10 +13,6 @@
 
 
 
-
-
-
-
 <div class="container">
     <div class = "panel panel-primary">
       <div class = "panel-heading">Les commentaires:</div>
@@ -26,7 +22,7 @@
               <form #f="ngForm" (ngSubmit)="onAddCommentaire(f.value)">
                 <div class="form-group">
                   <label class="control-label">Message: </label>
-                  <input type="text" name="message" ngModel required="">  
+                  <input type="text" name="message" ngModel required="" [(ngModel)]="commentaire.message">  
                   <button [disabled]="!f.valid" type="submit"  class="btn btn-primary" >Ajouter commentaire</button>
                 </div>
               </form>

@@ -7,6 +7,7 @@ import { HomeCmpComponent } from './home-cmp/home-cmp.component';
 import { ProduitCmpComponent } from './produit-cmp/produit-cmp.component';
 import { ClientsCmpComponent } from './clients-cmp/clients-cmp.component';
 import { ContactUsCmpComponent } from './contact-us-cmp/contact-us-cmp.component';
+import { ClientService } from '../service/client.service';
 
 const  appRoutes : Routes = [
   {path : 'Home', component:HomeCmpComponent},
@@ -30,7 +31,9 @@ const  appRoutes : Routes = [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
   ],
-  providers: [],
+  providers: [
+    ClientService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

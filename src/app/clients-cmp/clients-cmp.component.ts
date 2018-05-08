@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ClientService } from '../../service/client.service';
 
 @Component({
   selector: 'app-clients-cmp',
@@ -7,30 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientsCmpComponent implements OnInit {
 
-info={
-  nom:"mourad",
-  email:"mourad@gmail.com", 
-  tel: 78990
-}
-comments=[
-{ date: new Date(),message:"ceci est le commentaire A"},
-{ date: new Date(),message:"ceci est le commentaire B"},
-{ date: new Date(),message:"ceci est le commentaire C"}
-];
+info:any;
+comments=[];
 
 commentaire={
   date: null,
   message: ""
 }
-  constructor() { }
+  constructor( public clientService : ClientService) {
+    this.info=clientService.getInfo(); 
+    this.comments=clientService.getAllComments();
+   }
 
   ngOnInit() {
   }
 
   onAddCommentaire(c){
-    c.date = new Date();
-    this.comments.push(c);
-    this.commentaire={date: null, message:""};
+    this.clientService.addComments(c);
+    this.commentaire.message="";
+    this.comments=this.clientService.getAllComments();
   }
 
 }
