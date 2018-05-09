@@ -1,1 +1,43 @@
-<h1>contact us vide</h1>
+<div class="container">
+<div class="panel panel-primary">
+    <div class="panel-heading">Gallery</div>
+    <div class="panel-body">
+
+        <form #f="ngForm"  (ngSubmit)="onSearsh(f.value)">
+            <div class="form-group">
+                <label>Mot clé: </label>
+                <input type="text" name="motCle" ngModel required [(ngModel)]="motCle">
+                <button type="submit" class="btn btn-primary">Recherche</button>
+            </div>
+        </form>
+
+
+<div class="row">
+    <div *ngFor="let p of pagePhotos?.hits" class="col-md-3">
+        <div class="panel panel-primary  cadre">
+            <div class="panel-heading">
+                <img class="img-circle" width="50 px" height="50 px" src="{{p.userImageURL}}" />
+                {{p.user}}
+            </div>
+            <div class="panel-body">
+                <img width="150 px" height="150 px" src="{{p.previewURL}}" />
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div>
+        <ul class="nav nav-pills">
+            <li [ngClass]="{'active': currentPage == (i+1)}" class="clickable" *ngFor="let page of pages; let i= index">
+               <a (click)="goToPage(i)">{{i}}</a> 
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+    </div>
+</div>
+</div>
